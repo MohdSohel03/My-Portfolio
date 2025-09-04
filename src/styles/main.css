@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-raised: #2a2a2a;
+  --color-text: #f5f5f7;
+  --color-text-secondary: #adadad;
+  --color-primary: #0a84ff;
+  --color-secondary: #af52de;
+  --color-accent: #30d158;
+  --color-warning: #ffd60a;
+  --color-error: #ff453a;
+  --border-radius: 12px;
+}
+
+.light-theme {
+  --color-background: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f0f0f0;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #424245;
+  --color-primary: #0066CC;
+  --color-secondary: #9a31cd;
+  --color-accent: #28c941;
+  --color-warning: #e8b609;
+  --color-error: #e62e27;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-background;
+    @apply text-text;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  section {
+    @apply py-16 md:py-24;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-opacity-90 focus:ring-primary;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary;
+  }
+
+  .card {
+    @apply bg-surface rounded-xl shadow-md overflow-hidden transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
+  }
+  
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-surface-raised {
+  background-color: var(--color-surface-raised);
+}
+
+.text-text {
+  color: var(--color-text);
+}
+
+.text-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.bg-error {
+  background-color: var(--color-error);
+}
+
+.border-error {
+  border-color: var(--color-error);
+}
+
+.focus\:ring-error:focus {
+  --tw-ring-color: var(--color-error);
+}
+
+.social-icon-link {
+  @apply flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 bg-surface-raised rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-text placeholder-text-secondary;
+}
+
+.input-field:disabled {
+  @apply opacity-60 cursor-not-allowed;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.skill-bar {
+  @apply relative h-2 bg-surface-raised rounded-full overflow-hidden;
+}
+
+.skill-progress {
+  @apply absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-1000;
+}
+
+/* Enhanced mobile menu styles */
+@media (max-width: 767px) {
+  .mobile-menu {
+    @apply px-6;
+  }
+}
+
+/* Smooth scrolling enhancement */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Focus styles for accessibility */
+.btn:focus-visible,
+.input-field:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
